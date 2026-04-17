@@ -32,7 +32,7 @@ body {
     background-color: var(--bg-color);
     color: var(--text-main);
     line-height: 1.5;
-    padding: 2rem 1rem;
+    padding: 1.25rem 1rem;
 }
 
 .container {
@@ -40,7 +40,7 @@ body {
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1.25rem;
 }
 
 header {
@@ -61,9 +61,9 @@ header p {
     background: var(--card-bg);
     border: 1px solid var(--border);
     border-radius: 5px; /* Minimal radius maintained */
-    padding: 1.5rem;
+    padding: 1.25rem;
 }
-.mt-4 { margin-top: 1.5rem; }
+.mt-4 { margin-top: 1.25rem; }
 .hidden { display: none !important; }
 
 h2 {
@@ -78,7 +78,7 @@ h2 {
 /* Inputs */
 .input-row {
     display: flex;
-    gap: 1.5rem;
+    gap: 1.25rem;
     flex-wrap: wrap;
 }
 .input-wrapper {
@@ -95,13 +95,13 @@ label {
 }
 input[type="number"] {
     width: 100%;
-    padding: 0.75rem;
+    padding: 0.5rem 0.75rem;
     background-color: transparent;
     color: #fff;
-    border: 1px solid var(--border-highlight);
+    border: 1px solid var(--border);
     border-radius: 5px;
     font-family: 'JetBrains Mono', monospace;
-    font-size: 1rem;
+    font-size: 0.95rem;
     outline: none;
     transition: border-color 0.2s, background-color 0.2s;
 }
@@ -114,13 +114,13 @@ input[type="number"]:focus {
 .primary-btn {
     display: block;
     width: 100%;
-    padding: 0.75rem;
-    margin-top: 1.5rem;
+    padding: 0.6rem;
+    margin-top: 1rem;
     background: rgba(59, 130, 246, 0.15); /* Translucent blue background */
     color: #93c5fd; /* Light blue text */
     border: 1px solid rgba(59, 130, 246, 0.6); /* Prominent 1px blue border */
     border-radius: 5px; 
-    font-size: 1rem;
+    font-size: 0.95rem;
     font-weight: 600;
     cursor: pointer;
     transition: background 0.2s, border-color 0.2s, color 0.2s;
@@ -133,6 +133,17 @@ input[type="number"]:focus {
 .primary-btn:disabled {
     opacity: 0.4;
     cursor: not-allowed;
+}
+
+.neutral-btn {
+    background: rgba(255, 255, 255, 0.05); /* Translucent neutral */
+    color: #e2e8f0;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+.neutral-btn:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.4);
+    color: #ffffff;
 }
 
 /* Errors */
@@ -149,16 +160,18 @@ input[type="number"]:focus {
 /* Actors */
 .actors-container {
     display: flex;
-    gap: 1.5rem;
+    gap: 1.25rem;
 }
 .actor-card {
     flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
 }
 .actor-header {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    margin-bottom: 1rem;
 }
 .actor-header h2 {
     margin: 0;
@@ -199,7 +212,7 @@ input[type="number"]:focus {
 .step {
     border: 1px solid var(--border);
     border-radius: 5px;
-    padding: 1rem;
+    padding: 0.75rem;
     background: var(--step-bg);
     opacity: 1;
     transform: translateY(0);
@@ -234,8 +247,8 @@ input[type="number"]:focus {
 }
 
 .math-result {
-    margin-top: 0.75rem;
-    font-size: 1.1rem;
+    margin-top: 0.35rem;
+    font-size: 1rem;
     font-weight: 600;
 }
 .success-text {
@@ -248,8 +261,8 @@ input[type="number"]:focus {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 1.5rem 0;
-    gap: 3rem;
+    padding: 1rem 0;
+    gap: 4rem;
 }
 .exchange-arrow {
     position: relative;
@@ -269,11 +282,11 @@ input[type="number"]:focus {
     position: relative;
 }
 .right .arrow-line::after {
-    content: ''; position: absolute; right: 0; top: -4px; width: 0; height: 0;
+    content: ''; position: absolute; right: -2px; top: 50%; transform: translateY(-50%); width: 0; height: 0;
     border-top: 5px solid transparent; border-bottom: 5px solid transparent; border-left: 10px solid var(--border-highlight);
 }
 .left .arrow-line::after {
-    content: ''; position: absolute; left: 0; top: -4px; width: 0; height: 0;
+    content: ''; position: absolute; left: -2px; top: 50%; transform: translateY(-50%); width: 0; height: 0;
     border-top: 5px solid transparent; border-bottom: 5px solid transparent; border-right: 10px solid var(--border-highlight);
 }
 .badge {
@@ -337,7 +350,7 @@ input[type="number"]:focus {
         flex-direction: row; 
         height: 100px;
         padding: 1rem 0;
-        gap: 2rem;
+        gap: 4rem;
     }
     
     .exchange-arrow {
@@ -354,9 +367,10 @@ input[type="number"]:focus {
     /* Right Arrow (Alice to Bob -> Points Down) */
     .right .arrow-line::after {
         top: auto;
-        right: auto;
-        bottom: -4px;
-        left: -4px;
+        right: 50%;
+        bottom: -2px;
+        left: auto;
+        transform: translateX(50%);
         border-top: 10px solid var(--border-highlight);
         border-bottom: none;
         border-left: 5px solid transparent;
@@ -365,10 +379,11 @@ input[type="number"]:focus {
     
     /* Left Arrow (Bob to Alice -> Points Up) */
     .left .arrow-line::after {
-        top: -4px;
-        left: -4px;
+        top: -2px;
+        left: 50%;
         bottom: auto;
         right: auto;
+        transform: translateX(-50%);
         border-bottom: 10px solid var(--border-highlight);
         border-top: none;
         border-left: 5px solid transparent;

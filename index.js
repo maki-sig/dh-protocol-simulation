@@ -82,6 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     startBtn.addEventListener('click', async () => {
+        startBtn.classList.remove('neutral-btn');
         // Reset Error & Simulation Areas
         errorBox.classList.add('hidden');
         errorBox.innerText = '';
@@ -171,6 +172,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Restore button
             startBtn.disabled = false;
             startBtn.innerText = 'Restart Simulation';
+            startBtn.classList.add('neutral-btn');
         }
     });
 });

@@ -129,6 +129,35 @@ document.addEventListener('DOMContentLoaded', () => {
         const sA = modPow(B, a, p);
         const sB = modPow(A, b, p);
 
+        function getIntermediateStepHTML(variable, base, exponent, modulus) {
+            if (exponent <= 1000n) {
+                try {
+                    const powVal = base ** exponent;
+                    const powStr = powVal.toString();
+                    if (powStr.length <= 100) {
+                        return `<div>${variable} = ${powStr} mod ${modulus}</div>`;
+                    }
+                } catch(e) {}
+            }
+            return ``;
+        }
+
+        const intA = document.querySelector('.math-intermediate-A');
+        intA.innerHTML = getIntermediateStepHTML('A', g, a, p);
+        intA.classList.remove('hidden');
+
+        const intB = document.querySelector('.math-intermediate-B');
+        intB.innerHTML = getIntermediateStepHTML('B', g, b, p);
+        intB.classList.remove('hidden');
+
+        const intsA = document.querySelector('.math-intermediate-sA');
+        intsA.innerHTML = getIntermediateStepHTML('s', B, a, p);
+        intsA.classList.remove('hidden');
+
+        const intsB = document.querySelector('.math-intermediate-sB');
+        intsB.innerHTML = getIntermediateStepHTML('s', A, b, p);
+        intsB.classList.remove('hidden');
+
         // Fill Values in DOM
         setAllInnerText('.val-p', p.toString());
         setAllInnerText('.val-g', g.toString());

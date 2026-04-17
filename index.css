@@ -16,6 +16,11 @@
     --success-border: #064e3b;
 }
 
+html {
+    scroll-behavior: smooth;
+    font-size: 14px;
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -244,7 +249,7 @@ input[type="number"]:focus {
     flex-direction: column;
     justify-content: center;
     padding: 1.5rem 0;
-    gap: 1.5rem;
+    gap: 3rem;
 }
 .exchange-arrow {
     position: relative;
@@ -273,7 +278,7 @@ input[type="number"]:focus {
 }
 .badge {
     position: absolute;
-    top: -25px;
+    top: -35px;
     background: var(--card-bg);
     border: 1px solid var(--border-highlight);
     color: var(--text-main);
@@ -332,7 +337,7 @@ input[type="number"]:focus {
         flex-direction: row; 
         height: 100px;
         padding: 1rem 0;
-        gap: 1rem;
+        gap: 2rem;
     }
     
     .exchange-arrow {
@@ -375,11 +380,11 @@ input[type="number"]:focus {
         top: auto;
     }
     .right .badge {
-        margin-bottom: 0.5rem;
+        margin-bottom: 1rem;
     }
     .left .badge {
         order: 2;
-        margin-top: 0.5rem;
+        margin-top: 1rem;
     }
     
     /* Fix animation direction for vertical layout */

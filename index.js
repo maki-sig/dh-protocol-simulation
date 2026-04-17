@@ -144,27 +144,28 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             simulationArea.classList.remove('hidden');
 
+            // Autoscroll completely to the bottom immediately so user can watch the sequence
+            window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+
+            const reveal = async (el, delayMs) => {
+                await sleep(delayMs);
+                el.classList.remove('hidden');
+            };
+
             // Step 1: Alice & Bob compute public keys
-            await sleep(500);
-            stepAliceCalc.classList.remove('hidden');
-            await sleep(800);
-            stepBobCalc.classList.remove('hidden');
+            await reveal(stepAliceCalc, 500);
+            await reveal(stepBobCalc, 800);
 
             // Step 2: Exchange
-            await sleep(1500);
-            stepExchangeA.classList.remove('hidden');
-            await sleep(800);
-            stepExchangeB.classList.remove('hidden');
+            await reveal(stepExchangeA, 1500);
+            await reveal(stepExchangeB, 800);
 
             // Step 3: Shared Secret Computation
-            await sleep(1500);
-            stepAliceSecret.classList.remove('hidden');
-            await sleep(800);
-            stepBobSecret.classList.remove('hidden');
+            await reveal(stepAliceSecret, 1500);
+            await reveal(stepBobSecret, 800);
 
             // Success validation
-            await sleep(1500);
-            stepSuccess.classList.remove('hidden');
+            await reveal(stepSuccess, 1500);
 
         } finally {
             // Restore button

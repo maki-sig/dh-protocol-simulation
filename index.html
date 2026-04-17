@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diffie-Hellman Protocol Simulation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=JetBrains+Mono&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <main class="container">
+        <header>
+            <h1>Diffie-Hellman Key Exchange</h1>
+            <p>Simple Simulation</p>
+        </header>
+
+        <section class="card input-section">
+            <h2>Public Parameters</h2>
+            <div class="input-row">
+                <div class="input-wrapper">
+                    <label for="prime">Prime Number (p)</label>
+                    <input type="number" id="prime" value="23" placeholder="e.g. 23" min="2">
+                </div>
+                <div class="input-wrapper">
+                    <label for="generator">Generator (g)</label>
+                    <input type="number" id="generator" value="5" placeholder="e.g. 5" min="2">
+                </div>
+            </div>
+
+            <h2 class="mt-4">Private Keys</h2>
+            <div class="input-row">
+                <div class="input-wrapper">
+                    <label for="private-a">🦊 Alice's Private Key (a)</label>
+                    <input type="number" id="private-a" value="4" placeholder="Any integer">
+                </div>
+                <div class="input-wrapper">
+                    <label for="private-b">🐻 Bob's Private Key (b)</label>
+                    <input type="number" id="private-b" value="3" placeholder="Any integer">
+                </div>
+            </div>
+
+            <div id="error-message" class="error-box hidden"></div>
+
+            <button id="start-btn" class="primary-btn">Start Simulation</button>
+        </section>
+
+        <!-- Simulation Area -->
+        <div id="simulation-area" class="actors-container hidden">
+            <!-- Alice -->
+            <section class="actor-card card">
+                <div class="actor-header">
+                    <span class="mascot">🦊</span>
+                    <h2>Alice</h2>
+                </div>
+
+                <div id="step-alice-calc" class="step hidden">
+                    <h3>Step 1: Alice computes Public Key (A)</h3>
+                    <div class="math-box">
+                        <div class="formula-base">A = g<sup>a</sup> mod p</div>
+                        A = <span class="val-g"></span><sup><span class="val-a"></span></sup> mod <span
+                            class="val-p"></span>
+                    </div>
+                    <div class="math-result">A = <strong class="res-A"></strong></div>
+                </div>
+
+                <div id="step-alice-secret" class="step hidden mt-4">
+                    <h3>Step 3: Alice computes Shared Secret (s)</h3>
+                    <div class="math-box">
+                        <div class="formula-base">s = B<sup>a</sup> mod p</div>
+                        s = <span class="res-B"></span><sup><span class="val-a"></span></sup> mod <span
+                            class="val-p"></span>
+                    </div>
+                    <div class="math-result success-text">s = <strong class="res-s"></strong></div>
+                </div>
+            </section>
+
+            <!-- Exchange Middle -->
+            <div class="exchange-zone">
+                <div id="step-exchange-A" class="exchange-arrow right hidden">
+                    <span class="badge">Sends A: <strong class="res-A"></strong></span>
+                    <div class="arrow-line"></div>
+                </div>
+                <div id="step-exchange-B" class="exchange-arrow left hidden mt-4">
+                    <span class="badge">Sends B: <strong class="res-B"></strong></span>
+                    <div class="arrow-line"></div>
+                </div>
+            </div>
+
+            <!-- Bob -->
+            <section class="actor-card card">
+                <div class="actor-header">
+                    <span class="mascot">🐻</span>
+                    <h2>Bob</h2>
+                </div>
+
+                <div id="step-bob-calc" class="step hidden">
+                    <h3>Step 1: Bob computes Public Key (B)</h3>
+                    <div class="math-box">
+                        <div class="formula-base">B = g<sup>b</sup> mod p</div>
+                        B = <span class="val-g"></span><sup><span class="val-b"></span></sup> mod <span
+                            class="val-p"></span>
+                    </div>
+                    <div class="math-result">B = <strong class="res-B"></strong></div>
+                </div>
+
+                <div id="step-bob-secret" class="step hidden mt-4">
+                    <h3>Step 3: Bob computes Shared Secret (s)</h3>
+                    <div class="math-box">
+                        <div class="formula-base">s = A<sup>b</sup> mod p</div>
+                        s = <span class="res-A"></span><sup><span class="val-b"></span></sup> mod <span
+                            class="val-p"></span>
+                    </div>
+                    <div class="math-result success-text">s = <strong class="res-s"></strong></div>
+                </div>
+            </section>
+        </div>
+
+        <section id="step-success" class="card success-box hidden mt-4">
+            <h2>Shared Secret Established</h2>
+            <p>Both Alice and Bob independently reached the secret key <strong><span class="res-s"
+                        style="font-size: 1.5em;"></span></strong> without ever exchanging it directly.</p>
+        </section>
+
+    </main>
+    <script src="index.js"></script>
+</body>
+
+</html>

@@ -234,6 +234,8 @@ input[type="number"]:focus {
     font-size: 0.95rem;
     line-height: 1.6;
     color: #cbd5e1;
+    overflow-wrap: anywhere;
+    word-break: break-word;
 }
 
 .formula-base {
@@ -250,6 +252,8 @@ input[type="number"]:focus {
     margin-top: 0.35rem;
     font-size: 1rem;
     font-weight: 600;
+    overflow-wrap: anywhere;
+    word-break: break-word;
 }
 .success-text {
     color: var(--success-text);
@@ -299,6 +303,9 @@ input[type="number"]:focus {
     font-size: 0.8rem;
     border-radius: 5px;
     font-weight: 600;
+    max-width: 90vw;
+    overflow-wrap: anywhere;
+    word-break: break-word;
 }
 
 /* Final */
@@ -309,6 +316,8 @@ input[type="number"]:focus {
     opacity: 1;
     transform: translateY(0);
     transition: opacity 0.5s ease, transform 0.5s ease, visibility 0s;
+    overflow-wrap: anywhere;
+    word-break: break-word;
 }
 .success-box h2 {
     color: var(--success-text);
